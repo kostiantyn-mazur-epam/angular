@@ -10,5 +10,9 @@ export class Product implements IProduct {
         public isAvailable?: boolean,
         public userRatings?: number[],
         public relatedProductLinks?: string[]
-    ) { }
+    ) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+     }
 }
