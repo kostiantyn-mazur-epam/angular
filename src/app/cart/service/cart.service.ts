@@ -8,7 +8,7 @@ import { EventEmitter } from 'protractor';
 export class CartService {
 
   private productSource = new Subject<string>();
-  products$ = this.productSource.asObservable();
+  product$ = this.productSource.asObservable();
 
   constructor() { }
 
