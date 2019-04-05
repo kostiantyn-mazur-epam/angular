@@ -2,6 +2,7 @@
   <ul>
     <li *ngFor = 'let product of products'>
       <app-product [product]='product'></app-product>
+      <button  *ngIf="product.isAvailable" (click)='onBuy(product)'>Buy</button>
     </li>
   </ul>
 </div>
