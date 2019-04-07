@@ -19,4 +19,13 @@ export class CartListComponent implements OnInit {
     this.cartService.product$.subscribe(product => this.products.push(product));
   }
 
+  getProductsNumber(): number {
+    return this.products.length;
+  }
+
+  getTotalSum(): number {
+    return this.products.reduce((result, product) => {
+      return result + product.price;
+    }, 0);
+  }
 }
