@@ -44,4 +44,14 @@ export class CartListComponent implements OnInit {
     const itemIndex = this.products.findIndex(cartItem => cartItem.product.name === item.product.name);
     this.products.splice(itemIndex, 1);
   }
+
+  addItem(item: {product: IProduct; quantity: number}): void {
+    // const product = this.products.find(cartItem => cartItem === item);
+    item.quantity++;
+  }
+
+  removeItem(item: {product: IProduct; quantity: number}): void {
+    // const product = this.products.find(cartItem => cartItem === item);
+    item.quantity--;
+  }
 }
