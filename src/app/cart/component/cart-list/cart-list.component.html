@@ -2,7 +2,8 @@
   <h2>Cart</h2>
   <ul>
     <li *ngFor = 'let product of products'>
-      <app-cart-item [product]="product"></app-cart-item>
+      <app-cart-item [cartItem]="product"></app-cart-item>
+      <button (click)="deleteItem(product)">x</button>
     </li>
   </ul>
   <div><span>Total number of products: </span>{{getProductsNumber()}}</div>
