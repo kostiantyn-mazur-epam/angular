@@ -31,13 +31,11 @@ export class CartListComponent implements OnInit {
   }
 
   getProductsNumber(): number {
-    return this.products.length;
+    return this.cartService.getProductsNumber(this.products);
   }
 
   getTotalSum(): number {
-    return this.products.reduce((result, cartItem) => {
-      return result + cartItem.product.price;
-    }, 0);
+    return this.cartService.getTotalSum(this.products);
   }
 
   deleteItem(item: {product: IProduct; quantity: number}): void {

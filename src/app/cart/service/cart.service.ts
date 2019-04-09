@@ -2,6 +2,7 @@ import { Injectable, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { EventEmitter } from 'protractor';
 import { Product } from 'src/app/prdct/product/model/product.model';
+import { IProduct } from 'src/app/prdct/product/model/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,15 @@ export class CartService {
 
   onBuy(product: Product) {
     this.productSource.next(product);
+  }
+
+  getProductsNumber(products: any[]): number {
+    return products.length;
+  }
+
+  getTotalSum(products: {product: IProduct; quantity: number}[]): number {
+    return products.reduce((result, cartItem) => {
+      return result + cartItem.product.price * cartItem.quantity;
+    }, 0);
   }
 }
