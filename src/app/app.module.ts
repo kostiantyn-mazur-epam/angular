@@ -12,7 +12,7 @@ import { ProductModule } from './prdct/product.module';
   imports: [
     BrowserModule,
     CartModule,
-    ProductModule
+    ProductModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
