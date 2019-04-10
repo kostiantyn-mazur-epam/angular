@@ -4,7 +4,7 @@
     <li *ngFor = 'let product of products'>
       <app-cart-item [cartItem]="product"></app-cart-item>
       <button (click)="addItem(product)">Add</button>
-      <button (click)="removeItem(product)">Remove</button>
+      <button [disabled]="product.quantity === 0" (click)="removeItem(product)">Remove</button>
       <button (click)="deleteItem(product)">x</button>
     </li>
   </ul>
