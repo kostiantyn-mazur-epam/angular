@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Product } from 'src/app/products/models/product.model';
 import { CartService } from '../../service/cart.service';
 import { IProduct } from 'src/app/products/models/product.interface';
@@ -8,7 +8,9 @@ import { IProduct } from 'src/app/products/models/product.interface';
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css']
 })
-export class CartListComponent implements OnInit {
+export class CartListComponent implements OnInit, OnDestroy {
+
+  private subscription: any;
 
   products: {
     product: IProduct;
@@ -19,7 +21,7 @@ export class CartListComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.products);
-    this.cartService.product$.subscribe(product => {
+    this.subscription = this.cartService.product$.subscribe(product => {
       const existingProductIndex = this.products.find(cartItem => cartItem.product.name === product.name);
 
       if (existingProductIndex) {
@@ -30,6 +32,10 @@ export class CartListComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   getProductsNumber(): number {
     return this.cartService.getProductsNumber(this.products);
   }
@@ -38,17 +44,17 @@ export class CartListComponent implements OnInit {
     return this.cartService.getTotalSum(this.products);
   }
 
-  deleteItem(item: {product: IProduct; quantity: number}): void {
+  deleteItem(item: { product: IProduct; quantity: number }): void {
     const itemIndex = this.products.findIndex(cartItem => cartItem.product.name === item.product.name);
     this.products.splice(itemIndex, 1);
   }
 
-  addItem(item: {product: IProduct; quantity: number}): void {
+  addItem(item: { product: IProduct; quantity: number }): void {
     // const product = this.products.find(cartItem => cartItem === item);
     item.quantity++;
   }
 
-  removeItem(item: {product: IProduct; quantity: number}): void {
+  removeItem(item: { product: IProduct; quantity: number }): void {
     // const product = this.products.find(cartItem => cartItem === item);
     item.quantity--;
   }
