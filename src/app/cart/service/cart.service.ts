@@ -1,8 +1,8 @@
 import { Injectable, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { EventEmitter } from 'protractor';
-import { Product } from 'src/app/prdct/product/model/product.model';
-import { IProduct } from 'src/app/prdct/product/model/product.interface';
+import { Product } from 'src/app/products/models/product.model';
+import { IProduct } from 'src/app/products/models/product.interface';
 
 @Injectable({
   providedIn: 'root'

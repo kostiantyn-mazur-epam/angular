@@ -1,4 +1,4 @@
-import { Categories } from '../model/categories.model';
+import { Categories } from './categories.model';
 import { IProduct } from './product.interface';
 
 export class Product implements IProduct {

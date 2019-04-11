@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { IProduct } from '../model/product.interface';
+import { IProduct } from '../models/product.interface';
 import { PRODUCTS } from './mock-products';
 
 @Injectable({

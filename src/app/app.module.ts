@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CartModule } from './cart/module/cart.module';
-import { ProductModule } from './prdct/product.module';
+import { CartModule } from './cart/cart.module';
+import { ProductModule } from './products/product.module';
 
 @NgModule({
   declarations: [

@@ -1,5 +1,5 @@
-import { IProduct } from '../model/product.interface';
-import { Product } from '../model/product.model';
+import { IProduct } from '../models/product.interface';
+import { Product } from '../models/product.model';
 
 export const PRODUCTS: IProduct[] = [
     new Product('product1', 'description1', 10, true),

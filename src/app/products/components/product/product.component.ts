@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, SecurityContext, ViewEncapsulation } from '@angular/core';
 
-import { Product } from '../model/product.model';
+import { Product } from '../../models/product.model';
 import { CartService } from 'src/app/cart/service/cart.service';
 
 @Component({

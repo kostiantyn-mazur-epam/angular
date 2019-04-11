@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductModule } from 'src/app/prdct/product.module';
-import { CartListComponent } from '../component/cart-list/cart-list.component';
-import { CartItemComponent } from '../component/cart-item/cart-item.component';
+import { ProductModule } from 'src/app/products/product.module';
+import { CartListComponent } from './component/cart-list/cart-list.component';
+import { CartItemComponent } from './component/cart-item/cart-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
