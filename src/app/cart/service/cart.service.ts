@@ -9,22 +9,52 @@ import { IProduct } from 'src/app/products/models/product.interface';
 })
 export class CartService {
 
-  private productSource = new Subject<Product>();
-  product$ = this.productSource.asObservable();
+  // private productSource = new Subject<Product>();
+  // product$ = this.productSource.asObservable();
+  private productSource = new Subject<Array<{ product: IProduct; quantity: number }>>();
+  private products: {
+    product: IProduct;
+    quantity: number;
+  }[] = [];
+  products$ = this.productSource.asObservable();
 
   constructor() { }
 
   onBuy(product: Product) {
-    this.productSource.next(product);
+    // this.productSource.next(product);
+    const existingProductIndex = this.products.find(cartItem => cartItem.product.name === product.name);
+
+    if (existingProductIndex) {
+      existingProductIndex.quantity++;
+    } else {
+      this.products.push({ product, quantity: 1 });
+    }
+
+    this.productSource.next(this.products);
   }
 
-  getProductsNumber(products: any[]): number {
-    return products.length;
+  getProductsNumber(): number {
+    return this.products.length;
   }
 
-  getTotalSum(products: {product: IProduct; quantity: number}[]): number {
-    return products.reduce((result, cartItem) => {
+  getTotalSum(): number {
+    return this.products.reduce((result, cartItem) => {
       return result + cartItem.product.price * cartItem.quantity;
     }, 0);
+  }
+
+  deleteItem(itemName: string): void {
+    const itemIndex = this.products.findIndex(cartItem => cartItem.product.name === itemName);
+    this.products.splice(itemIndex, 1);
+  }
+
+  addItem(itemName: string): void {
+    const product = this.products.find(cartItem => cartItem.product.name === itemName);
+    product.quantity++;
+  }
+
+  removeItem(itemName: string): void {
+    const product = this.products.find(cartItem => cartItem.product.name === itemName);
+    product.quantity--;
   }
 }

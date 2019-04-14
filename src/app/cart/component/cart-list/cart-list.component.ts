@@ -21,14 +21,17 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log(this.products);
-    this.subscription = this.cartService.product$.subscribe(product => {
-      const existingProductIndex = this.products.find(cartItem => cartItem.product.name === product.name);
+    // this.subscription = this.cartService.product$.subscribe(product => {
+    //   const existingProductIndex = this.products.find(cartItem => cartItem.product.name === product.name);
 
-      if (existingProductIndex) {
-        existingProductIndex.quantity++;
-      } else {
-        this.products.push({ product, quantity: 1 });
-      }
+    //   if (existingProductIndex) {
+    //     existingProductIndex.quantity++;
+    //   } else {
+    //     this.products.push({ product, quantity: 1 });
+    //   }
+    // });
+    this.subscription = this.cartService.products$.subscribe(products => {
+      this.products = products;
     });
   }
 
@@ -37,25 +40,22 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   getProductsNumber(): number {
-    return this.cartService.getProductsNumber(this.products);
+    return this.cartService.getProductsNumber();
   }
 
   getTotalSum(): number {
-    return this.cartService.getTotalSum(this.products);
+    return this.cartService.getTotalSum();
   }
 
-  deleteItem(item: { product: IProduct; quantity: number }): void {
-    const itemIndex = this.products.findIndex(cartItem => cartItem.product.name === item.product.name);
-    this.products.splice(itemIndex, 1);
+  deleteItem(itemName: string): void {
+    this.cartService.deleteItem(itemName);
   }
 
-  addItem(item: { product: IProduct; quantity: number }): void {
-    // const product = this.products.find(cartItem => cartItem === item);
-    item.quantity++;
+  addItem(itemName: string): void {
+    this.cartService.addItem(itemName);
   }
 
-  removeItem(item: { product: IProduct; quantity: number }): void {
-    // const product = this.products.find(cartItem => cartItem === item);
-    item.quantity--;
+  removeItem(itemName: string): void {
+    this.cartService.removeItem(itemName);
   }
 }

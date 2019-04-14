@@ -1,11 +1,11 @@
 <div *ngIf='products.length > 0'>
   <h2>Cart</h2>
   <ul>
-    <li *ngFor = 'let product of products'>
-      <app-cart-item [cartItem]="product"></app-cart-item>
-      <button (click)="addItem(product)">Add</button>
-      <button [disabled]="product.quantity === 0" (click)="removeItem(product)">Remove</button>
-      <button (click)="deleteItem(product)">x</button>
+    <li *ngFor = 'let productItem of products'>
+      <app-cart-item [cartItem]="productItem"></app-cart-item>
+      <button (click)="addItem(productItem.product.name)">Add</button>
+      <button [disabled]="productItem.quantity === 0" (click)="removeItem(productItem.product.name)">Remove</button>
+      <button (click)="deleteItem(productItem.product.name)">x</button>
     </li>
   </ul>
   <div><span>Total number of products: </span>{{getProductsNumber()}}</div>
