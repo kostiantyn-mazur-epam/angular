@@ -20,12 +20,12 @@ export class CartService {
 
   constructor() { }
 
-  onBuy(product: Product) {
+  onBuy(product: Product, quantity: number) {
     // this.productSource.next(product);
     const existingProductIndex = this.products.find(cartItem => cartItem.product.name === product.name);
 
     if (existingProductIndex) {
-      existingProductIndex.quantity++;
+      existingProductIndex.quantity += quantity;
     } else {
       this.products.push({ product, quantity: 1 });
     }

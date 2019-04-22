@@ -12,6 +12,7 @@ import { CartService } from 'src/app/cart/service/cart.service';
 })
 export class ProductListComponent implements OnInit {
 
+  defaultQuantity = 1;
   products: IProduct[];
 
   constructor(
@@ -23,8 +24,8 @@ export class ProductListComponent implements OnInit {
     this.products = this.productsService.getProducts();
   }
 
-  onBuy(product: Product): void {
+  onBuy(product: IProduct, quantity: number): void {
     console.log(`${product.name} was bought`);
-    this.cartService.onBuy(product);
+    this.cartService.onBuy(product, quantity);
   }
 }
