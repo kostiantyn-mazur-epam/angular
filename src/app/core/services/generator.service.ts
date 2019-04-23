@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CoreModule } from '../core/core.module';
+import { CoreModule } from '../core.module';
 
 @Injectable({
   providedIn: CoreModule,
-  useFactory: provideGeneratorFactory(5)
+  // useFactory: provideGeneratorFactory(5)
 })
 
 export class GeneratorService {
