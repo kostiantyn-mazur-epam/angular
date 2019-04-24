@@ -9,8 +9,10 @@ import { PRODUCTS } from './mock-products';
 export class ProductsService {
 
 
-  getProducts(): IProduct[] {
-    return PRODUCTS;
+  getProducts(): Promise<IProduct[]> {
+    return new Promise((resolve, reject) => {
+      resolve(PRODUCTS);
+    });
   }
 
   constructor() { }

@@ -13,7 +13,7 @@ import { CartService } from 'src/app/cart/service/cart.service';
 export class ProductListComponent implements OnInit {
 
   defaultQuantity = 1;
-  products: IProduct[];
+  products: Promise<IProduct[]>;
 
   constructor(
     private productsService: ProductsService,

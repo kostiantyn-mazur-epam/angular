@@ -1,5 +1,12 @@
 <div *ngIf='products.length > 0'>
   <h2>Cart</h2>
+  <div>
+    Sort by: <select #sorter>
+      <option>Price</option>
+      <option>Quantity</option>
+      <option selected>Name</option>
+    </select>
+  </div>
   <ul>
     <li *ngFor = 'let productItem of products'>
       <app-cart-item [cartItem]="productItem"></app-cart-item>
