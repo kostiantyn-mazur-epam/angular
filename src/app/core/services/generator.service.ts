@@ -3,10 +3,13 @@ import { CoreModule } from '../core.module';
 
 @Injectable({
   providedIn: CoreModule,
-  // useFactory: provideGeneratorFactory(5)
+  useFactory: provideGeneratorFactory,
+  deps: [5]
 })
 
 export class GeneratorService {
+
+  // private length: number;
 
   constructor(private length: number) { }
 

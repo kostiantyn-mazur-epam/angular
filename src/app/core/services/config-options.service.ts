@@ -23,7 +23,6 @@ export class ConfigOptionsService {
   }
 }
 
-
 export class ConfigurationOptions {
   id: number;
   email: string;

@@ -1,5 +1,8 @@
-import { Component, OnInit, Optional } from '@angular/core';
-import { LocalStorageService, ConstantService, GeneratorService, ConfigOptionsService } from '../core';
+import { Component, OnInit, Optional, inject } from '@angular/core';
+import { LocalStorageService, ConfigOptionsService, ConstantService, GeneratorService } from '../core';
+// import {LocalStorageService} from '../core/services/local-storage.service';
+// import {ConstantService } from '../core/services/constant.service';
+// import {ConfigOptionsService } from '../core/services/config-options.service';
 
 @Component({
   selector: 'app-contact-us',
